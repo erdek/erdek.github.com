@@ -1,12 +1,84 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 <style type="text/css">
-body { font-family: 'Droid Sans Mono', arial, serif; font-size: 100px; }
+@font-face {
+  font-family: 'Josefin';
+  src: local('Josefin'), url('fonts/josefin.otf');
+}
+body
+{
+    background-color: #EEEEEE;
+    color: #36393D;
+    text-shadow: 0px 1px 0px #EEEEEE;
+}
+
+a:link {color: #36393D;}
+a:visited {color: #36393D;}
+a:active {color: #36393D;}
+a:hover {color: #36393D;}
+
+.content a:link {text-decoration: none; color: #36393D;}
+.content a:visited {text-decoration: none; color: #36393D;}
+.content a:active {text-decoration: none; color: #36393D;}
+.content a:hover {text-decoration: none; color: #36393D;}
+
+.head
+{
+    font-family: "Josefin", "Inconsolata", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
+    font-size: 100px;
+}
+
+.content
+{
+
+    font-family: "Inconsolata", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
+    font-size: 50px;
+}
+
+.repo_content
+{
+
+    font-family: "Inconsolata", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+#desc
+{
+    margin-left: 10px;
+
+}
+
 </style>
 </head>
 <body>
-Doğan Aydın
+<span class="head">Doğan Aydın</span>
+<span style="float:right; position:absolute; right:25px;" class="repo_content">
+    <a href="http://friendfeed.com/doganaydin"><img src="logo/friendfeed.png"></a>
+    <a href="http://twitter.com/#!/dogan1aydin"><img src="logo/twitter.png"></a>
+    <a href="http://www.facebook.com/doganaydin"><img src="logo/facebook.png"></a>
+</span>
+<div class="content">
+    <ul>
+        <li>E-Mail: dogan1aydin (a) gmail.com</li>
+        <li><a href="http://tuxweet.linux.org.tr/doganaydin">Tuxweet</a></li>
+    </ul>
+</div>
+
+<div class="head">Repos</div>
+<div class="repo_content" id="repo"></div>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+    $.getJSON("http://github.com/api/v2/json/repos/show/doganaydin/?callback=?", function(data){
+       $.each(data.repositories,function(a)
+       {
+            $('#repo').append("<div style='margin:10px;'><a href='"+this["url"]+"'>"+this["name"]+"</a> Watchers: "+this["watchers"]+" Forks: "+this["forks"]+" <div id='desc'>Description: "+this["description"]+"</div></div><br>");
+       });
+    });
+});
+</script>
+
 </html>
