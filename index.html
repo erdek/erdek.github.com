@@ -50,15 +50,14 @@ a:hover {color: #36393D;}
     margin-left: 10px;
 
 }
-
 </style>
 </head>
 <body>
 <span class="head">Doğan Aydın</span>
 <span style="float:right; position:absolute; right:25px;" class="repo_content">
-    <a href="http://friendfeed.com/doganaydin"><img src="logo/friendfeed.png"></a>
-    <a href="http://twitter.com/#!/dogan1aydin"><img src="logo/twitter.png"></a>
-    <a href="http://www.facebook.com/doganaydin"><img src="logo/facebook.png"></a>
+    <a href="http://friendfeed.com/doganaydin"><img class="shake" src="logo/friendfeed.png"></a>
+    <a href="http://twitter.com/#!/dogan1aydin"><img class="shake" src="logo/twitter.png"></a>
+    <a href="http://www.facebook.com/doganaydin"><img class="shake" src="logo/facebook.png"></a>
 </span>
 <div class="content">
     <ul>
@@ -78,6 +77,33 @@ $(document).ready(function(){
             $('#repo').append("<div style='margin:10px;'><a href='"+this["url"]+"'>"+this["name"]+"</a> Watchers: "+this["watchers"]+" Forks: "+this["forks"]+" <div id='desc'>Description: "+this["description"]+"</div></div><br>");
        });
     });
+    
+    
+    
+    jQuery.fn.Shake = function(){
+	 this.each(function(init){
+		  var jqNode = $(this);
+		  jqNode.css({position: 'relative'});
+		  for(var t = 1; t <= 3; t++){
+			   jqNode.animate({ left: -25 },10)
+			   .animate({ left: 0 },50)
+			   .animate({ left: 25 },10)
+			   .animate({ left: 0 },50);
+		  }
+	 });
+	return this;
+}
+    
+    
+  $(".shake").mouseover(function() {
+    $(this).Shake();
+  }  );
+    
+    
+    
+    
+    
+    
 });
 </script>
 <script type="text/javascript">
