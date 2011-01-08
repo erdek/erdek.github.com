@@ -61,7 +61,7 @@ a:hover {color: #36393D;}
 </span>
 <div class="content">
     <ul>
-        <li>E-Mail: dogan1aydin (a) gmail.com</li>
+        <li id="ptt" title="Fuck Spam!">E-Mail: dogan1aydin <span id="a">(a)</span> gmail.com</li>
         <li><a href="http://tuxweet.linux.org.tr/doganaydin">Tuxweet</a></li>
     </ul>
 </div>
@@ -78,28 +78,24 @@ $(document).ready(function(){
        });
     });
     
-    
-    
     jQuery.fn.Shake = function(){
-	 this.each(function(init){
-		  var jqNode = $(this);
-		  jqNode.css({position: 'relative'});
-		  for(var t = 1; t <= 3; t++){
-			   jqNode.animate({ left: -25 },10)
-			   .animate({ left: 0 },50)
-			   .animate({ left: 25 },10)
-			   .animate({ left: 0 },50);
-		  }
-	 });
-	return this;
-}
+        this.each(function(init){
+            var jqNode = $(this);
+            jqNode.css({position: 'relative'});
+            for(var t = 1; t <= 3; t++){
+                jqNode.animate({ left: -25 },10).animate({ left: 0 },50).animate({ left: 25 },10).animate({ left: 0 },50);
+            }
+        });
+    return this;
+    }
     
+    $(".shake").mouseover(function() {
+        $(this).Shake();
+    });
     
-  $(".shake").mouseover(function() {
-    $(this).Shake();
-  }  );
-    
-    
+    // FUCK SPAM!!!
+    $("#ptt").mouseover(function() { $("#a").text("(@)"); });
+    $("#ptt").mouseout(function() { $("#a").text("(a)"); }); 
     
     
     
