@@ -1,119 +1,77 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-<style type="text/css">
-@font-face {
-  font-family: 'Josefin';
-  src: local('Josefin'), url('fonts/josefin.otf');
-}
-body
-{
-    background-color: #EEEEEE;
-    color: #36393D;
-    text-shadow: 0px 1px 0px #EEEEEE;
-}
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <title>~/Code/portfolio</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-a:link {color: #36393D;}
-a:visited {color: #36393D;}
-a:active {color: #36393D;}
-a:hover {color: #36393D;}
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
 
-.content a:link {text-decoration: none; color: #36393D;}
-.content a:visited {text-decoration: none; color: #36393D;}
-.content a:active {text-decoration: none; color: #36393D;}
-.content a:hover {text-decoration: none; color: #36393D;}
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
 
-.head
-{
-    font-family: "Josefin", "Inconsolata", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
-    font-size: 100px;
-}
+  <body>
 
-.content
-{
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">Project name</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-    font-family: "Inconsolata", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
-    font-size: 50px;
-}
+    <div class="container">
 
-.repo_content
-{
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Hello,</h1>
+        <p>I'm developing web applications with <strong>python</strong> and <strong>tornado web server</strong> or <strong>django framework</strong>. Also I'm using <strong>mongodb</strong> and <strong>redis</strong>.</p>
+        <p><a href="" class="btn primary large">Learn more &raquo;</a></p>
+      </div>
 
-    font-family: "Inconsolata", "Lucida Grande", "Lucida Sans Unicode", Helvetica, sans-serif;
-    font-size: 30px;
-}
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2></h2>
+          <p><a href="http://github.com/doganaydin"><img width="200" height="200" src="img/github.png"/></a></p>
+        </div>
+        <div class="span4">
+          <h2></h2>
+           <p><a href="http://twitter.com/doganaydin"><img width="200" height="200" src="img/twitter-logo.png"/></a></p>
+       </div>
+        <div class="span4">
+          <h2></h2>
+          <p><a href="https://plus.google.com/103228723192934323725/posts"><img width="200" height="200" src="img/google-plus.png"/></a></p>
+        </div>
+        <div class="span4">
+          <h2></h2>
+          <p><a href="http://www.linkedin.com/profile/view?id=136058072"><img width="200" height="200" src="img/linkedin.png"/></a></p>
+        </div>
+      </div>
 
-#desc
-{
-    margin-left: 10px;
+      <footer>
+        <p>&copy; Doğan Aydın 2011</p>
+      </footer>
 
-}
-</style>
-</head>
-<body>
-<span class="head">Doğan Aydın</span>
-<span style="float:right; position:absolute; right:25px;" class="repo_content">
-    <a href="http://friendfeed.com/doganaydin"><img class="shake" src="logo/friendfeed.png"></a>
-    <a href="http://twitter.com/#!/dogan1aydin"><img class="shake" src="logo/twitter.png"></a>
-    <a href="http://www.facebook.com/doganaydin"><img class="shake" src="logo/facebook.png"></a>
-</span><br>
-<span style="float:right; position:absolute; right:25px;" class="repo_content">#godaddy { WINTER149 }</span>
-<div class="content">
-    <ul>
-        <li id="ptt" title="Fuck Spam!">E-Mail: dogan1aydin <span id="a">(a)</span> gmail.com</li>
-        <li><a href="http://tuxweet.linux.org.tr/doganaydin">Tuxweet</a></li>
-    </ul>
-</div>
+    </div> <!-- /container -->
 
-<div class="head">Repos</div>
-<div class="repo_content" id="repo"></div>
-</body>
-<script type="text/javascript">
-$(document).ready(function(){
-    $.getJSON("http://github.com/api/v2/json/repos/show/doganaydin/?callback=?", function(data){
-       $.each(data.repositories,function(a)
-       {
-            $('#repo').append("<div style='margin:10px;'><a href='"+this["url"]+"'>"+this["name"]+"</a> Watchers: "+this["watchers"]+" Forks: "+this["forks"]+" <div id='desc'>Description: "+this["description"]+"</div></div><br>");
-       });
-    });
-    
-    jQuery.fn.Shake = function(){
-        this.each(function(init){
-            var jqNode = $(this);
-            jqNode.css({position: 'relative'});
-            for(var t = 1; t <= 3; t++){
-                jqNode.animate({ left: -25 },10).animate({ left: 0 },50).animate({ left: 25 },10).animate({ left: 0 },50);
-            }
-        });
-    return this;
-    }
-    
-    $(".shake").mouseover(function() {
-        $(this).Shake();
-    });
-    
-    // FUCK SPAM!!!
-    $("#ptt").mouseover(function() { $("#a").text("(@)"); });
-    $("#ptt").mouseout(function() { $("#a").text("(a)"); }); 
-    
-    
-    
-    
-});
-</script>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-9098196-5']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+  </body>
 </html>
